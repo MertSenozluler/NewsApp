@@ -12,7 +12,7 @@
 # 3)Create-Edit-Delete categories
 # 4)Add comment and delete all comments
 
-# Other users can only add comment and delete only this users comments.
+# Other users can only add comments and only delete their own comments
 
 # I created many-to-many relaationship with News and Categories
 # I created one-to-many relationship with Comments and Users
