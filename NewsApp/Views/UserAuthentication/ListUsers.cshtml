@@ -1,0 +1,38 @@
+﻿@using NewsApp.Models.Domain;
+
+@{
+    ViewData["Title"] = "ListUsers";
+}
+@model List<ApplicationUser>
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>UserName</th>
+      
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.UserName</td>
+                
+              
+                </tr>
+                 }
+                </tbody>
+            </table>
+            
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>

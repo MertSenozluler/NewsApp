@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "SearchResult";
+}
+@model NewsApp.Models.DTO.NewsListViewModel
+
+
+<div class="container mt-4">
+    <div class="row">
+        @{
+            var newsListBottom = Model.NewsList.OrderByDescending(n => n.Date);
+            foreach (var item in newsListBottom)
+            {
+                <div class="col-sm-12 col-md-4 col-lg-3">
+                    <div class="card">
+                        <div onclick="window.location.href='/Home/NewsDetail?newsId=@item.Id'" style="cursor:pointer">
+                            <img src="~/Uploads/@item.NewsImage" class="card-img-top" style="weight:215px;height:150px">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Title</h5>
+                                <p class="card-text">@Html.Raw(item.Body.Length > 50 ? item.Body.Substring(0, 50) + "..." : item.Body)</p>
+                                <small>@item.CategoryNames</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+

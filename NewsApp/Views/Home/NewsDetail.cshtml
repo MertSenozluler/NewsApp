@@ -1,0 +1,98 @@
+﻿@using System.Security.Claims;
+
+
+@{
+    ViewData["Title"] = "NewsDetail";
+}
+@model List<NewsApp.Models.DTO.NewsCommentViewModel>
+
+
+
+
+    <div class="container">
+        <h1 class="display-4" style="text-align: center;">@Model[0].NewsTitle</h1>
+
+        <img src="/Uploads/@Model[0].NewsImage" alt="flash" class="flashImage img-fluid mt-5" style="width:500px; height:350px">
+        <p class="lead mt-5">
+        @Html.Raw(Model[0].NewsBody)
+        </p>
+        <small>@Model[0].NewsDate</small>
+
+        <h2 class="text-center mt-5">Comments</h2>
+
+
+
+     
+
+
+        <div class="row d-flex justify-content-center mt-3">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+                    <div class="card-body p-4">
+                        <div class="form-outline mb-4">
+                         
+
+                            @if(User.Identity.IsAuthenticated)
+        {
+            <form asp-controller="Comment" asp-action="Add" method="post">
+                <label for="Comment">Write a comment:</label>
+                 <textarea class="form-control" rows="5" id="Comment" name="Comment"></textarea>
+                <input type="hidden" name="NewsId" value="@Model[0].NewsId" />
+            <input type="hidden" name="userId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" class="form-control" />
+            <button type="submit" class="btn btn-primary mt-2">Add Comment</button>
+            </form>
+        }
+
+                        </div>
+
+
+                    @if (Model.Any(x => x.Comment != null))
+                    {
+
+                        <div class="card mb-4">
+                            @foreach (var comment in Model.Where(x => x.Comment != null).OrderByDescending(x => x.CommentDate))
+                            {
+                                <div class="card-body">
+                                    <p>@comment.Comment</p>
+
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            
+                                            <p class="small mb-0 ms-2">@comment.CommentUser</p>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <p class="small text-muted mb-0">@comment.CommentDate</p>
+                                            <p class="small text-muted mb-0">-</p>
+                                            <p class="small mb-0">
+
+                                            @*Only the admin and the commenting user can see the delete button and delete it.*@
+                                            @if (comment.CommentUser.Id == comment.UserId || User.IsInRole("admin"))
+                                            {
+                                            <form asp-controller="Comment" asp-action="Delete" method="post">
+                                                <input type="hidden" name="CommentId" value="@comment.CommentId" />
+                                                <input type="hidden" name="CommentUserId" value="@comment.CommentUser.Id" />
+                                                <input type="hidden" name="NewsId" value="@comment.NewsId" />
+                                                        <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+                                            </form>
+
+                                            }</p>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                            }
+                        </div>
+                        }
+        else
+        {
+        <p>There are no comments for this news.</p>
+        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+

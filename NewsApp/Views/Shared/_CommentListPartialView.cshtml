@@ -1,0 +1,47 @@
+﻿@model List<NewsApp.Models.Domain.Comments>
+
+@*@if (Model.Comments == null)
+{
+    <h2>Yorum yok</h2>
+}
+else
+{*@
+    <table>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Comment</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>@item.User.UserName</td>
+                    <td>@item.Comment</td>
+                    <td>@item.Date</td>
+                </tr>
+        }
+    </tbody>
+</table>
+
+@*}*@
+
+
+@*<h2>Yorum yap</h2>
+@using (Html.BeginForm("AddComment", "Comment", FormMethod.Post))
+{
+        <div>
+        @Html.LabelFor(m => m.CommentText)
+        @Html.TextAreaFor(m => m.CommentText)
+        </div>
+        <input type="submit" value="Add Comment" />
+}
+
+@if (TempData["msg"] != null)
+{
+        <div>
+        @TempData["msg"]
+        </div>
+}*@

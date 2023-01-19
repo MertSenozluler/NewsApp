@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewData["Title"] = "NewsList";
+}
+
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+@model NewsApp.Models.DTO.NewsListViewModel
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-12">
+            <div>
+                <h2 style="text-align:center" class="mb-4">News</h2>
+
+                @if (TempData["msg"] != null)
+                {
+                    <div class="alert alert-dark mt-3">@TempData["msg"]</div>
+                }
+               
+                <table class="table">
+                    <thead>
+                    <tr>
+                         
+                            <th scope="col">Title</th>
+                            <th scope="col">Body</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Categories</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        
+                        @foreach (var item in Model.NewsList)
+                    {
+                        
+                        <tr>
+                               
+                            <td>
+                                <div onclick="window.location.href='/Home/NewsDetail?newsId=@item.Id'" style="cursor:pointer">
+                                    @item.Title
+                                </div>            
+                            </td>
+               
+                            <td>@Html.Raw(item.Body.Length > 25 ? item.Body.Substring(0, 25) + "..." : item.Body)</td>
+                            <td>@item.Date</td>
+                            <td>
+                                <div onclick="window.location.href='/Home/NewsDetail?newsId=@item.Id'" style="cursor:pointer">
+                                <img style="height:60px;width:80px" src="/Uploads/@item.NewsImage" />
+                                </div>
+                            </td>
+                            <td>@item.CategoryNames</td>
+                            
+                            <td>
+                                <a href="/News/Edit/?id=@item.Id" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                                <a onclick="return window.confirm('Are you sure?')" href="/News/Delete/?id=@item.Id" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            </td>
+                            
+                            </tr>
+                            
+                        }
+                    </tbody>
+                </table>
+ 
+                <div class="input-container">
+                    <a href="/News/Add" class="btn btn-secondary">Add</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-10"></div>
+         <div class="col-2">
+            <nav aria-label="Page navigation example" class="mt-5">
+                <ul class="pagination">
+                    @for(int i=1;i<=Model.TotalPages;i++)
+                    {
+                        if(i==Model.CurrentPage){
+                         <li class="page-item"><a class="page-link active" href="/News/Newslist?currentPage=@i&term=@Model.Term">@i</a></li>
+                        }else
+                        {
+                        <li class="page-item"><a class="page-link" href="/News/Newslist?currentPage=@i&term=@Model.Term">@i</a></li>
+                        }
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
