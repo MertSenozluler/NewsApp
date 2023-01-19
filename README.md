@@ -1,7 +1,7 @@
 # NewsApp
 
 # This app for example for News. Only one admin is available and this admin created as code first.
-# This app for tutorial and fot this i will share admin information to check my application.
+# This app for tutorial and for this i will share admin information to check my application.
 
 # Username : Admin
 # Password : Admin@12345#
