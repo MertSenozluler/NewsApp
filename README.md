@@ -1,7 +1,7 @@
 # NewsApp
 
 # This app for example for News. Only one admin is available and this admin created as code first.
-# This app for tutorial and for this i will share admin information to check my application.
+
 
 
 # I created only one admin and this admin can do this:
