@@ -10,6 +10,8 @@ namespace NewsApp.Models.Domain
         public int? NewsId { get; set; }
         
         public string? CommentDate { get; set; }
+
+        
         public string Comment { get; set; }
 
         public string? UserId { get; set; }

@@ -26,6 +26,10 @@ namespace NewsApp.Repositories.Implementation
         {
             try
             {
+                if (model.Comment.Length < 10 || model.Comment.Length > 100)
+                {
+                    return false;
+                }
                 var user = ctx.Users.Find(userId);
                 model.User = user;
                 model.UserId = userId;

@@ -6,7 +6,10 @@
 }
 @model List<NewsApp.Models.DTO.NewsCommentViewModel>
 
-
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-dark mt-3">@TempData["msg"]</div>
+}
 
 
     <div class="container">

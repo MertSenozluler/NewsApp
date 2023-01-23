@@ -1,4 +1,5 @@
 ﻿using NewsApp.Models.Domain;
+using System.ComponentModel.DataAnnotations;
 
 namespace NewsApp.Models.DTO
 {

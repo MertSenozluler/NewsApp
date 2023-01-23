@@ -18,6 +18,10 @@ namespace NewsApp.Repositories.Implementation
         {
             try
             {
+                if (model.Title.Length < 5 || model.Title.Length > 20)
+                {
+                    return false;
+                }
                 ctx.News.Add(model);
                 ctx.SaveChanges();
                 foreach (var categoryId in model.Categories)

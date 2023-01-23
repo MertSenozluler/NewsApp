@@ -35,7 +35,7 @@ namespace NewsApp.Controllers
             }
             else
             {
-                TempData["msg"] = "Error on the server side...";
+                TempData["msg"] = "The number of characters you enter must be between 10 and 100 characters. Please try again";
                 return RedirectToAction("NewsDetail", "Home", model);
             }
         }

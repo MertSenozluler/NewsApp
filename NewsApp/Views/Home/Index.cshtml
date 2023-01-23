@@ -130,8 +130,8 @@
                             <img src="~/Uploads/@item.NewsImage" class="card-img-top" style="weight:215px;height:150px">
                             <div class="card-body">
                                 <h5 class="card-title">@item.Title</h5>
-                                <p class="card-text" style="font-weight:300"> @(item.Body.Length > 30 ? (item.Body).Substring(0, Math.Min(item.Body.Length, 30)) : (item.Body))</p>
-                                <small>@item.CategoryNames</small>
+                                <p class="card-text" style="font-weight:300"> @(item.Body.Length > 30 ? (item.Body).Substring(0, Math.Min(item.Body.Length, 30)) + "..." : (item.Body))</p>
+                                <small>@(item.CategoryNames.Length > 30 ? item.CategoryNames.Substring(0, 30) + "..." : item.CategoryNames)</small>
                             </div>
                         </div>
                     </div>

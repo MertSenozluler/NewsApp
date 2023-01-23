@@ -17,11 +17,18 @@
   
 }
 
+#categoryItem:hover{
+    transform: scale(1.1);
+    background-color:lightblue;
+    border-radius:30px;
+    padding:5px;
+}
 
-.flash{
+
+.flash {
     text-decoration: none;
     color: black;
-  }
+}
 
 .carousel-caption>a{
     text-decoration: none;

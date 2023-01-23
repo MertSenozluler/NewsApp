@@ -1,7 +1,7 @@
 ﻿@using NewsApp.Models.Domain;
 @model List<Category>
 
-
+    
 
 
         <div class="container-fluid bg-light">
@@ -11,7 +11,7 @@
                     @foreach(var item in Model)
             {
                 <li class="list-inline-item">
-                    <a class="nav-link" aria-current="page" href="/Home/GetNewsByCategoryId?categoryId=@item.Id">@item.CategoryName</a>
+                    <a class="nav-link" aria-current="page" href="/Home/GetNewsByCategoryId?categoryId=@item.Id" id="categoryItem">@item.CategoryName</a>
                 </li>
             }
             
