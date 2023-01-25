@@ -15,7 +15,7 @@
 # I created many-to-many relaationship with News and Categories
 # I created one-to-many relationship with Comments and Users
 
-# Search button is active, Admin panel for operations is active, Login-Register-Logout is active.
+# Search button is active, Admin panel for operations is active, Login-Register-Logout is active. Also categories create dynamically 
 # As Db, I used Microsoft Sql Server. 
 
 # Thanks!
