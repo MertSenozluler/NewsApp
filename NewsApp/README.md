@@ -1,8 +1,5 @@
 This app for example for News. Only one admin is available and this admin creating as code first.
-This app for tutorial and fot this i will share admin information to check my application.
 
-Username : Admin
-Password : Admin@12345#
 
 I created only one admin and this admin can do this:
 1)Look users
